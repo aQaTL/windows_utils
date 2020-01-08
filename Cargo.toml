@@ -1,7 +1,7 @@
 [package]
 name = "windows_utils"
 description = "Collection of programs for Windows"
-version = "0.1.0"
+version = "0.2.0"
 authors = ["aQaTL <mmsoltys@outlook.com>"]
 edition = "2018"
 license = "MIT"
@@ -14,5 +14,13 @@ path = "src/hardlock.rs"
 name = "emptyrecyclebin"
 path = "src/emptyrecyclebin.rs"
 
+[[bin]]
+name = "cmd_startup_script"
+path = "src/cmd_startup_script.rs"
+
 [dependencies]
 winapi = { version = "0.3", features = ["winuser", "shellapi"] }
+winreg = "0.6"
+failure = "0.1"
+failure_derive = "0.1"
+byteorder = "1.3.2"
