@@ -1,7 +1,7 @@
 [package]
 name = "windows_utils"
 description = "Collection of programs for Windows"
-version = "0.2.0"
+version = "0.3.0"
 authors = ["aQaTL <mmsoltys@outlook.com>"]
 edition = "2018"
 license = "MIT"
@@ -18,8 +18,12 @@ path = "src/emptyrecyclebin.rs"
 name = "cmd_startup_script"
 path = "src/cmd_startup_script.rs"
 
+[[bin]]
+name = "display_insomnia"
+path = "src/display_insomnia.rs"
+
 [dependencies]
-winapi = { version = "0.3", features = ["winuser", "shellapi"] }
+winapi = { version = "0.3", features = ["winuser", "shellapi", "winbase", "datetimeapi", "errhandlingapi", "winnls"] }
 winreg = "0.6"
 failure = "0.1"
 failure_derive = "0.1"

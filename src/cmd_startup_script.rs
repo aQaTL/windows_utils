@@ -1,13 +1,12 @@
+use byteorder::ReadBytesExt;
 use std::{
 	io::{stdin, stdout, Write},
 	path::PathBuf,
-
 };
 use winreg::{
 	enums::{RegType, HKEY_CURRENT_USER},
 	RegKey, RegValue,
 };
-use byteorder::ReadBytesExt;
 
 #[derive(Debug, failure_derive::Fail)]
 enum ProgramError {
