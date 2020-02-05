@@ -1,7 +1,7 @@
 [package]
 name = "windows_utils"
 description = "Collection of programs for Windows"
-version = "0.3.0"
+version = "0.4.0"
 authors = ["aQaTL <mmsoltys@outlook.com>"]
 edition = "2018"
 license = "MIT"
@@ -23,8 +23,14 @@ name = "display_insomnia"
 path = "src/display_insomnia.rs"
 
 [dependencies]
-winapi = { version = "0.3", features = ["winuser", "shellapi", "winbase", "datetimeapi", "errhandlingapi", "winnls"] }
 winreg = "0.6"
 failure = "0.1"
 failure_derive = "0.1"
 byteorder = "1.3.2"
+
+[dependencies.winapi]
+version = "0.3"
+features = [
+	"winuser", "shellapi", "winbase", "datetimeapi", "errhandlingapi", "winnls", "psapi",
+	"processthreadsapi"
+]
