@@ -1,6 +1,6 @@
 use core::ptr;
 use std::mem::{size_of, size_of_val};
-use winapi::shared::minwindef::{FALSE, HMODULE};
+use winapi::shared::minwindef::{FALSE, HMODULE, MAKELONG};
 use winapi::um::processthreadsapi::OpenProcess;
 use winapi::um::psapi::{EnumProcessModules, EnumProcesses, GetModuleBaseNameA};
 use winapi::um::winnt::{PROCESS_QUERY_INFORMATION, PROCESS_VM_READ};
@@ -11,6 +11,8 @@ fn main() {
 }
 
 unsafe fn main_() {
+	stop_media();
+
 	LockWorkStation();
 
 	let processes = get_processes();
@@ -27,6 +29,15 @@ unsafe fn main_() {
 	if display_insomnia_process.is_none() {
 		SendMessageA(HWND_BROADCAST, WM_SYSCOMMAND, SC_MONITORPOWER, 2);
 	}
+}
+
+unsafe fn stop_media() {
+	SendMessageA(
+		HWND_BROADCAST,
+		WM_APPCOMMAND,
+		0,
+		MAKELONG(0, APPCOMMAND_MEDIA_STOP as u16) as isize,
+	);
 }
 
 unsafe fn get_processes() -> Option<Vec<u32>> {
