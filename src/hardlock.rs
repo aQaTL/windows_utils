@@ -11,9 +11,9 @@ fn main() {
 }
 
 unsafe fn main_() {
-	stop_media();
-
 	LockWorkStation();
+
+	stop_media();
 
 	let processes = get_processes();
 	let display_insomnia_process = {
